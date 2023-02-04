@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,7 +23,7 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
-        }
+    }
 
     private void SzinKeveres()
     {
@@ -32,12 +32,12 @@ public partial class MainWindow : Window
 
     private void sliPiros_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
     {
-        pirosErtek.Content = "Piros értéke: "+(Convert.ToByte(sliPiros.Value));
+        pirosErtek.Content = "Piros értéke: " + (Convert.ToByte(sliPiros.Value));
         SzinKeveres();
     }
     private void sliZold_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
     {
-        zoldErtek.Content = "Zöld értéke: "+(Convert.ToByte(sliZold.Value));
+        zoldErtek.Content = "Zöld értéke: " + (Convert.ToByte(sliZold.Value));
         SzinKeveres();
 
     }
@@ -49,7 +49,15 @@ public partial class MainWindow : Window
 
     private void btnRogzit_Click(object sender, RoutedEventArgs e)
     {
-        lbSzinek.Items.Add($"{Convert.ToByte(sliPiros.Value)} {Convert.ToByte(sliZold.Value)} {Convert.ToByte(sliKek.Value)}");
+        List<string> felvettek = new List<string>();
+        if (felvettek.Contains($"{Convert.ToByte(sliPiros.Value)} {Convert.ToByte(sliZold.Value)} {Convert.ToByte(sliKek.Value)}")){
+            return;
+        }
+        else
+        {
+            lbSzinek.Items.Add($"{Convert.ToByte(sliPiros.Value)} {Convert.ToByte(sliZold.Value)} {Convert.ToByte(sliKek.Value)}");
+            felvettek.Add($"{Convert.ToByte(sliPiros.Value)} {Convert.ToByte(sliZold.Value)} {Convert.ToByte(sliKek.Value)}");
+        }
     }
 
     private void btnTorol_Click(object sender, RoutedEventArgs e)
